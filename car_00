@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Apr  2 15:50:18 2019
+
+@author: MCA
+
+wheel forces
+"""
+
+import numpy as np
+from math import sin, cos
+
+slipF_angle = 6 #deg
+slipR_angle = 6 #deg
+
+#slip angle bude vybiran z dat od vyrobce, podle velikosti sil
+
+wheel_angle = 20 #deg
+
+dir_FL = wheel_angle - slipF_angle
+dir_RL = - slipR_angle
+
+g = 9.81 #m/s
+
+m = 250 #kg
+L = 1600 #mm
+B = 1250 #mm
+x = 1000/L
+
+m1 = m*x
+m2 = m*(1-x)
+
+f = 0.72
+
+#
+#Fn_FL + Fn_RL + Dn = 0
+#
+#Ft_FL + Ft_RL + Dt = 0
+#
+#Fz_FL + Fz_FR + G = 0
+#
+#
+TzF = np.array([[cos(dir_FL), sin(dir_FL), 0],
+               [-sin(dir_FL), cos(dir_FL), 0], 
+               [0, 0, 1]])
+
+TzR = np.array([[cos(dir_FL), sin(dir_FL), 0],
+               [-sin(dir_FL), cos(dir_FL), 0], 
+               [0, 0, 1]])
+
+
+
+Fz_FL = np.reshape(np.array([0, 0, m1*g]), (-1,1))
+Fz_RL = np.reshape(np.array([0, 0, m2*g]), (-1,1))
+
+Fxy_FL_loc =  np.reshape(np.array([0, m1*g*f, 0]), (-1,1))
+Fxy_FL = TzF @ Ft_FL_loc
+
+Fxy_RL_loc =  np.reshape(np.array([0, m2*g*f, 0]), (-1,1))
+Fxy_RL = TzR @ Ft_FL_loc
+
+Dxy = Fxy_FL + Fxy_RL
+Dxy = Dxy * (-1)  
+
+
