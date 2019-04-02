@@ -31,7 +31,7 @@ x = 1000/L
 m1 = m*x
 m2 = m*(1-x)
 
-f = 0.72
+f = 0.72 #friction - rubber vs tarmac 
 
 #
 #Fn_FL + Fn_RL + Dn = 0
