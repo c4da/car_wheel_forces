@@ -34,9 +34,10 @@ m2 = m*(1-x)
 f = 0.72 #friction - rubber vs tarmac 
 
 #
-#Fn_FL + Fn_RL + Dn = 0
 #
-#Ft_FL + Ft_RL + Dt = 0
+#Fxy_FL + Fxy_RL + Dxy = 0
+#
+#F, D jsou vektory v rovine xy (horizontalni)
 #
 #Fz_FL + Fz_FR + G = 0
 #
