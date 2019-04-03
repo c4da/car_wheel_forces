@@ -56,10 +56,10 @@ Fz_FL = np.reshape(np.array([0, 0, m1*g]), (-1,1))
 Fz_RL = np.reshape(np.array([0, 0, m2*g]), (-1,1))
 
 Fxy_FL_loc =  np.reshape(np.array([0, m1*g*f, 0]), (-1,1))
-Fxy_FL = TzF @ Ft_FL_loc
+Fxy_FL = TzF @ Fxy_FL_loc
 
 Fxy_RL_loc =  np.reshape(np.array([0, m2*g*f, 0]), (-1,1))
-Fxy_RL = TzR @ Ft_FL_loc
+Fxy_RL = TzR @ Fxy_RL_loc
 
 Dxy = Fxy_FL + Fxy_RL
 Dxy = Dxy * (-1)  
